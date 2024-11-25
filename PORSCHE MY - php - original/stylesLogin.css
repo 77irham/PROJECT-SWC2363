@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("images/Login Wallpaper.png") center/cover no-repeat;
+    transition: background 0.5s ease-in-out; /* Smooth transition for background */
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 500px;
+    background: #000;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth shadow and transformation */
+}
+
+.wrapper:hover {
+    box-shadow: 0 0 20px #0ef;
+    transform: scale(1.05); /* Slight scale effect on hover */
+    animation: animate 20s linear infinite;
+}
+
+@keyframes animate {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.5s ease-in-out, opacity 0.5s ease; /* Smooth form transition */
+    opacity: 1;
+}
+
+.wrapper.active .form-wrapper.sign-in {
+    transform: translateY(-450px);
+    opacity: 0;
+}
+
+.wrapper .form-wrapper.sign-up {
+    position: absolute;
+    top: 450px;
+    left: 0;
+    opacity: 0;
+}
+
+.wrapper.active .form-wrapper.sign-up {
+    transform: translateY(-450px);
+    opacity: 1;
+}
+
+h2 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.input-group {
+    position: relative;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+    transition: border-color 0.3s ease; /* Smooth border color change */
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.input-group input {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 5px;
+    background: transparent;
+    border: none;
+    outline: none;
+    transition: border-bottom 0.3s ease; /* Smooth input border transition */
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    top: -5px;
+    font-size: 12px;
+    color: #0ef;
+}
+
+.input-group input:focus {
+    border-bottom: 2px solid #0ef; /* Focus effect with smooth transition */
+}
+
+.remember {
+    margin: -5px 0 15px 5px;
+}
+
+.remember label {
+    color: #fff;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.remember a {
+    color: #00EEFF;
+    transition: color 0.3s ease; /* Smooth link color transition */
+}
+
+.remember label input {
+    accent-color: #0ef;
+}
+
+button {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: #fff; /* White background */
+    box-shadow: 0 0 10px #000;
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Smooth button effects */
+}
+
+button:hover {
+    background: #C0C0C0; /* Grey background on hover */
+    box-shadow: 0 0 15px #000;
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+.signUp-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+    transition: opacity 0.3s ease; /* Smooth transition for link opacity */
+}
+
+.signUp-link p {
+    color: #fff;
+}
+
+.signUp-link p a {
+    color: #0ef;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth link hover transition */
+}
+
+.signUp-link p a:hover {
+    color: #08d;
+    text-decoration: underline;
+}
+
+/* Modal Styles */
+.modal-content {
+    width: 80%;
+    max-width: 600px;
+    margin: 270px auto;
+    padding: 20px;
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: all 0.5s ease; /* Smooth modal content transition */
+}
+
+.modal-content h3,
+.modal-content p {
+    color: #FFFFFF;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease; /* Smooth modal fade-in effect */
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    max-height: 400px; /* Set a maximum height */
+    overflow-y: auto;   /* Enable vertical scrolling */
+    padding-right: 10px; /* Optional, add some space for scroll bar */
+}
+
+/* Close button styles */
+.close-btn {
+    background-color: #fff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for close button */
+}
+
+.close-btn:hover {
+    background-color: #C0C0C0;
+}
+
+/* For consistency: Close button inside modal */
+#closeNewTermsModal, #closeTermsModal {
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+#closeNewTermsModal:hover, #closeTermsModal:hover {
+    background-color: #C0C0C0; /* Grey background on hover */
+    color: #000; /* Keep text color black */
+}
+
+.back-btn {
+    position: fixed;
+    width: 150px;
+    top: 30px;
+    right: 70px;
+    padding: 35px; /* Button size */
+    background-color: #fff; /* Adjust the background color */
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 18px; /* Text size */
+    border-radius: 100px; /* Rounded corners */
+    text-align: center; /* Center text horizontally */
+    line-height: 0.3; /* Center text vertically */
+    display: inline-block; /* Ensure the button is treated as an inline block */
+    transition: all 0.3s ease; /* Smooth transition for back button */
+}
+
+.back-btn:hover {
+    background-color: #d4d4d4; /* Change hover color */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
